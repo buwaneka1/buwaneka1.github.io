@@ -1,0 +1,13 @@
+   <!-- Start of Rant List Page -->
+                <!-- ======================= -->
+                <app-loader *ngIf="isLoading"></app-loader>
+                <div class="post-list">
+                    <app-rant [hidden]="isLoading" name="rant-value" class="post" (voteEvent)="receiveVoteClick($event)" *ngFor="let rant of rantList"
+                    [rantValues] = "rant"
+                    >
+                    </app-rant>
+                    <div class="rant__add" title="Add Rant">+</div> 
+                    </div>
+                  <!-- ======================= -->
+                  <!-- End of Rant List Page -->
+  

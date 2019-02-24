@@ -1,0 +1,43 @@
+  <!-- Start of login popup -->
+    <!-- ======================= -->
+
+    <div [ngClass]="{'popup': true, 'popup--open': isOpen}">
+        <div class="popup__header">
+            <div title="Close" class="close layout--center"  (click)="isOpen = !isOpen">
+                X
+            </div>
+        </div>
+        <div class="popup__body layout--center">
+            <div class="popup__body-inner">
+
+                <div class="form">
+                    <div class="form__title">
+                        JOIN <span class="highlight">#</span>DEVRANT
+                    </div>
+                    <div class="form__description">
+                        Vote and comment on others' rants. Post your own.
+                    </div>
+                    <form name="login" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                        <div class="login">
+                            <input type="text" name="username" placeholder="USERNAME" #username [(ngModel)]="usernameText" (blur)="validateInputs(f,1)" [hidden]="isLoadingTrue"/>
+                            <input type="password" name="password" placeholder="PASSWORD" [(ngModel)]="passwordText" #password (blur)="validateInputs(f,2)" [hidden]="isLoadingTrue"/>
+                            
+                            <div class="loader"  *ngIf="isLoadingTrue">
+                                <app-loader></app-loader>
+                            </div>
+                            <div class="form__error">
+                                <div *ngIf="usernameEmpty">Username is required</div>
+                                <div *ngIf="passwordEmpty">Password is required</div>
+                                <div *ngIf="errorMessage">{{errorMessage}}</div>
+                            </div>
+
+                            <input [disabled]="isLoadingTrue" type="submit" value="LET ME IN" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= -->
+    <!-- End of login popup -->

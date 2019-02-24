@@ -1,0 +1,38 @@
+  
+    <div class="page">
+
+        <!-- Start of Header -->
+		<!-- ======================= -->
+  
+    
+       <app-header #header (joinEvent)="receiveJoinClick($event)" ></app-header>
+		
+		<!-- ======================= -->
+        <!-- End of Header -->
+
+        <!-- Start of Main Section -->
+		<!-- ======================= -->
+		
+        <section class="main layout--center">
+            <div class="main__content layout--wrapped">
+               <app-loader *ngIf="isLoadingTrue"></app-loader>
+                <!-- ======================= -->
+                <!-- End of Rant Details Page-->
+
+                <!-- Start of the routing part -->
+                <!-- ======================  -->
+                <router-outlet></router-outlet>
+                <!-- ======================= -->
+                <!-- End of routing part-->
+
+            </div>
+        </section>
+		
+		<!-- ======================= -->
+        <!-- End of Main Section -->
+
+    </div>
+
+    <app-login [isOpen]="isLogingOpen"  #login (usernameEvent)="setUserName($event)" (loggedIn)="receiveLoggedIn($event)"></app-login>
+
+
